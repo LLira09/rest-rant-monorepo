@@ -5,9 +5,9 @@ function EditPlaceForm() {
 
 	const history = useHistory()
 
-    const { placeId } = useParams()
+	const { placeId } = useParams()
 
-    const [place, setPlace] = useState({
+	const [place, setPlace] = useState({
 		name: '',
 		pic: '',
 		city: '',
@@ -17,17 +17,17 @@ function EditPlaceForm() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await fetch(`http://localhost:5000/places/${placeId}`)
+			const response = await fetch(`http://localhost:3005/places/${placeId}`)
 			const resData = await response.json()
 			setPlace(resData)
 		}
 		fetchData()
-	}, [ placeId ])
+	}, [placeId])
 
 	async function handleSubmit(e) {
 		e.preventDefault()
 
-		await fetch(`http://localhost:5000/places/${place.placeId}`, {
+		await fetch(`http://localhost:3005/places/${place.placeId}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json'

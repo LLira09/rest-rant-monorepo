@@ -14,9 +14,9 @@ function NewCommentForm({ place, onSubmit }) {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:5000/users`)
+            const response = await fetch(`http://localhost:3005/users`)
             const users = await response.json()
-            setComment({ ...comment, authorId: users[0]?.userId})
+            setComment({ ...comment, authorId: users[0]?.userId })
             setAuthors(users)
         }
         fetchData()
